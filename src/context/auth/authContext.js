@@ -26,6 +26,7 @@ export const AuthProvider = ({children}) => {
         
                 if(json.success){
                     localStorage.setItem('token', json.authToken)
+                    setIsAuthenticated(true)
                     console.log("User successfully created!")
                 }else{
                     console.log({error: json.error})
@@ -50,6 +51,7 @@ export const AuthProvider = ({children}) => {
         
                 if(json.success){
                     localStorage.setItem('token', json.authToken)
+                    setIsAuthenticated(true)
                     console.log('Logged in successfully')
                 }else{
                     console.log({error: json.error})
