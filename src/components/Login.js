@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/auth/authContext'
 
 const Login = () => {
 
     const navigate = useNavigate()
-    const {loginUser, isAuthenticated} = useAuth()
+    const {loginUser} = useAuth()
     
     const [formData, setFormData] = useState({
         email: '',
