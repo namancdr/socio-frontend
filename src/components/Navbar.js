@@ -1,10 +1,9 @@
 import React from 'react'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/auth/authContext'
 
 const Navbar = () => {
     const navigate = useNavigate()
-    const location = useLocation()
     const {isAuthenticated, setIsAuthenticated}= useAuth()
 
     const handleLogout = (e) => {
@@ -18,6 +17,9 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-lg bg-light bg-transparent">
             <div className="container-fluid d-flex justify-content-between">
                 <a className="navbar-brand text-light" href="/">Socio</a>
+
+        {/* TODO: Render login and signup seperately, useLocation */}
+
                     {!isAuthenticated ?
                     <form className="d-flex">
                         <Link to='/login' className="btn  mx-1 btn-primary" role="button">Login</Link>

@@ -7,6 +7,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import Signup from './components/Signup';
 import { AuthProvider } from './context/auth/authContext';
+import PrivateRoute from './protected/PrivateRoute';
 
 function App() {
   return (
@@ -17,9 +18,15 @@ function App() {
         <AddBtn />
 
         <Routes>
-          <Route path="/" element={<Home />} />
+          
           <Route path="/login" element={<Login /> } />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/"
+            element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>}
+          />
         </Routes>
       </AuthProvider>
     </div>

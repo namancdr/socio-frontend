@@ -64,9 +64,12 @@ export const AuthProvider = ({children}) => {
         }  
 
         useEffect(() => {
-          
-            if(localStorage.getItem('token')){
+            const token = localStorage.getItem('token')
+            console.log({token})
+
+            if(!isAuthenticated && token){
                 setIsAuthenticated(true)
+                
             }else{
                 setIsAuthenticated(false)
             }
