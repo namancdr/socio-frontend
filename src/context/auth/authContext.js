@@ -77,17 +77,6 @@ export const AuthProvider = ({children}) => {
             
         }  
 
-<<<<<<< Updated upstream
-        useEffect(() => {
-          
-            if(localStorage.getItem('token')){
-                setIsAuthenticated(true)
-            }else{
-                setIsAuthenticated(false)
-            }
-         
-        }, [])
-=======
         // Get user detail handling
         const getUser = async () => {
             const response = await fetch(`${host}/api/auth/getuser`, {
@@ -101,7 +90,6 @@ export const AuthProvider = ({children}) => {
             const json = await response.json()
             setUser(json)
         }
->>>>>>> Stashed changes
         
 
         
