@@ -7,10 +7,19 @@ import Home from './components/Home'
 import Login from './components/Login'
 import Signup from './components/Signup';
 import { AuthProvider } from './context/auth/authContext';
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 import { PostProvider } from './context/post/postContext'
 import PrivateRoute from './protected/PrivateRoute';
 import CreatePost from './components/CreatePost';
 import Profile from './components/Profile';
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 function App() {
   return (
@@ -19,7 +28,17 @@ function App() {
       <PostProvider>
       <BrowserRouter>
 
+<<<<<<< Updated upstream
         
+=======
+<<<<<<< Updated upstream
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login /> } />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+=======
+>>>>>>> Stashed changes
           <Navbar />
           <Footer />
           <Routes>
@@ -49,6 +68,10 @@ function App() {
           </Routes>
         </BrowserRouter>
         </PostProvider>
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
       </AuthProvider>
     </div>
   );

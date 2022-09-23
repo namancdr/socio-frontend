@@ -1,4 +1,14 @@
+<<<<<<< Updated upstream
 import Posts from './Posts'
+=======
+<<<<<<< Updated upstream
+import React from 'react'
+=======
+import Posts from './Posts'
+>>>>>>> Stashed changes
+
+const Home = () => {
+>>>>>>> Stashed changes
 
 
 const Home = () => {
