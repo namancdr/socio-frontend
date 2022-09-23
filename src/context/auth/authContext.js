@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext()
 
@@ -8,11 +8,22 @@ export const useAuth = () => {
 }
 
 export const AuthProvider = ({children}) => {
-    const host = process.env.REACT_APP_HOST
+        const host = process.env.REACT_APP_HOST
 
-        const [isAuthenticated, setIsAuthenticated] = useState(false)
+        const [user, setUser] = useState([])
+    
+        // state to check if the user is logged in
+        const [isAuthenticated, setIsAuthenticated] = useState(() => {
+            const token = localStorage.getItem('token');
 
+            if(token){
+                return true
+            }else{
+                return false
+            }
+        })
 
+        // Singup handling
         const createUser = async({name, username, email, password}) => {
             try {
                 const response = await fetch(`${host}/api/auth/createuser`, {
@@ -37,7 +48,9 @@ export const AuthProvider = ({children}) => {
             }
             
         }
-        
+
+
+        // Login handling
         const loginUser = async({email, password}) => {
             try {
                 const response = await fetch(`${host}/api/auth/login`, {
@@ -53,6 +66,7 @@ export const AuthProvider = ({children}) => {
                     localStorage.setItem('token', json.authToken)
                     setIsAuthenticated(true)
                     console.log('Logged in successfully')
+                    return Promise.resolve()
                 }else{
                     console.log({error: json.error})
                 }
@@ -63,6 +77,7 @@ export const AuthProvider = ({children}) => {
             
         }  
 
+<<<<<<< Updated upstream
         useEffect(() => {
           
             if(localStorage.getItem('token')){
@@ -72,14 +87,32 @@ export const AuthProvider = ({children}) => {
             }
          
         }, [])
+=======
+        // Get user detail handling
+        const getUser = async () => {
+            const response = await fetch(`${host}/api/auth/getuser`, {
+                method: 'POST', 
+                headers: {
+                  'Content-Type': 'application/json',
+                  'auth-token': localStorage.getItem('token')
+                }
+            });
+    
+            const json = await response.json()
+            setUser(json)
+        }
+>>>>>>> Stashed changes
         
+
         
 
     const value={
         createUser,
         loginUser,
         isAuthenticated,
-        setIsAuthenticated
+        setIsAuthenticated,
+        user,
+        getUser
     }
 
     return (

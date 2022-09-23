@@ -24,10 +24,10 @@ const Signup = () => {
         }))
     } 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         if(cpassword === password){
-            createUser(formData)
+           await createUser(formData)
             navigate('/')
         }else{
             console.log('Password do not match!')
@@ -35,7 +35,7 @@ const Signup = () => {
     }
 
   return (
-    <div className='container mt-4'>
+<div className='container' style={{marginTop: "80px"}}>
         <h2>Signup</h2>
         <hr />
         <form onSubmit={handleSubmit}>

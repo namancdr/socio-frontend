@@ -21,14 +21,14 @@ const Login = () => {
         }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        loginUser(formData)
+        await loginUser(formData)
         navigate('/')
     }
 
   return (
-    <div className='container mt-4'>
+    <div className='container' style={{marginTop: "80px"}}>
         <h2>Login</h2>
         <hr />
         <form onSubmit={handleSubmit}>

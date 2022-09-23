@@ -8,16 +8,93 @@
 body{
     background-color: #1B1A1D;
 }
-
-.addBtn{
-    background-color: #3F8DFD;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+.navbar{
+    width: 100%;
+    background-color: #1B1A1D;
 }
+
+.create-post-icon{
+    height: 20px;
+    width: 20px;
+}
+
 
 .footer{
     background: #2B2D2E;
-    height: 40px;
     width: 100%;
+}
+
+/* Post section */
+
+.skeleton-img, .skeleton-text{
+    max-width: 100%;
+}
+
+.greetings{
+    margin: 0 6%;
+}
+
+.post-card{
+    background-color: #2B2D2E;
+    width: 90%;
+    padding: 6px 5%;
+    box-sizing: border-box;
+    border-radius: 25px;
+}
+
+.post-header{
+    width: 100%;
+}
+
+.post-profile-pic-container{
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+}
+
+.post-profile-pic{
+    max-width: 100%;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.post-option-btn{
+    margin-left: auto;
+}
+
+.post-img{
+    width: 100%;
+    align-self: center;
+}
+
+.post-img img{
+    max-width: 100%;
+    min-width: 100%;
+    border-radius: 15px;
+}
+
+.post-text{
+    width: 100%;
+    align-self: center;
+    overflow-wrap:break-word;
+}
+
+.profile-pic{
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+}
+
+@media only screen and (min-width: 600px) {
+    
+    .navbar, .mid-heading-text{
+        padding: 0px 200px;
+    }
+            
+    .post-card{
+        width: 350px;
+        padding: 4px 1%;
+        
+    }
 }
