@@ -49,7 +49,7 @@ const Profile = (props) => {
           <hr />
         </div>
         {usersPost ? usersPost.map((post) => {
-          return <UserPostCard key={post._id} usersPost={post} name={user.name} />
+          return <UserPostCard key={post._id} usersPost={post} username={user.username} />
         }):  <ContentLoading />}
     </div>
   )

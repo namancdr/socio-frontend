@@ -4,6 +4,7 @@ import shareIcon from '../assets/share.png'
 
 const PostCard = (props) => {
     const {post} = props
+
     return(
         <>
         <div className="container post-card d-flex flex-column justify-content-center mt-4">  
@@ -17,7 +18,6 @@ const PostCard = (props) => {
                 </div>
 
             </div>
-
             {post.image && <div className="post-img mt-3">
                  <img src={post.image} className="img-fluid" alt="post" /> 
             </div>

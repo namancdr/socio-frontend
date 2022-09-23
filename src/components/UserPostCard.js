@@ -7,9 +7,8 @@ import shareIcon from '../assets/share.png'
 
 const UserPostCard = (props) => {
     
-    const {usersPost, name} = props
+    const {usersPost, username} = props
     
-
   return (
     <div>
         <div className="container post-card d-flex flex-column justify-content-center mt-4">  
@@ -18,7 +17,7 @@ const UserPostCard = (props) => {
                     <img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg' className="post-profile-pic img-fluid" alt="profile" />
                 </div>
                 <div className="mx-3" style={{lineHeight: "1.1"}}>
-                    <span style={{fontSize: "16px"}}>{name}</span><br />
+                    <span style={{fontSize: "16px"}}>{username}</span><br />
                     <span style={{fontSize: "12px"}} className="small text-muted">12 mins ago</span>
                 </div>
                 <div className="post-option-btn" data-bs-toggle="dropdown" aria-expanded="false">
@@ -26,7 +25,7 @@ const UserPostCard = (props) => {
                 </div>
 
                 <ul className="dropdown-menu">
-                    <li className="dropdown-item" ></li>
+                    <li className="dropdown-item" >Delete Post</li>
                 </ul>   
 
             </div>

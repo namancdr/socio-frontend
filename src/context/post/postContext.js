@@ -39,8 +39,11 @@ export const PostProvider = ({children}) => {
             },
             body: JSON.stringify({image, textData})
         });
-        const post = await response.json()
-        console.log(post)
+        const json = await response.json()
+        
+        if(json.error){
+            console.error(json.error)
+        }
     }
 
     const fetchUsersPosts = async () => {
