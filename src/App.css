@@ -20,7 +20,7 @@ body{
 
 
 .footer{
-    background: #2B2D2E;
+    background: #1B1A1D;
     width: 100%;
 }
 
@@ -32,14 +32,6 @@ body{
 
 .greetings{
     margin: 0 6%;
-}
-
-.post-card{
-    background-color: #2B2D2E;
-    width: 90%;
-    padding: 6px 5%;
-    box-sizing: border-box;
-    border-radius: 25px;
 }
 
 .post-header{

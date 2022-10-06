@@ -48,7 +48,7 @@ const Profile = (props) => {
           <h5>Your Posts</h5>
           <hr />
         </div>
-        {usersPost ? usersPost.map((post) => {
+        {usersPost ? usersPost.slice().reverse().map((post) => {
           return <UserPostCard key={post._id} usersPost={post} username={user.username} />
         }):  <ContentLoading />}
     </div>

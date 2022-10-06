@@ -1,6 +1,7 @@
 import likeIcon from '../assets/like.png'
 import commentIcon from '../assets/comment.png'
 import shareIcon from '../assets/share.png'
+import {usePost} from '../context/post/postContext'
 
 // Things to do
     // Post profile picture with profile page
@@ -8,9 +9,12 @@ import shareIcon from '../assets/share.png'
 const UserPostCard = (props) => {
     
     const {usersPost, username} = props
+    const {deletePost} = usePost()
+
     
   return (
     <div>
+        
         <div className="container post-card d-flex flex-column justify-content-center mt-4">  
             <div className="post-header d-flex align-items-center mt-2">
                 <div className="post-profile-pic-container">
@@ -25,7 +29,7 @@ const UserPostCard = (props) => {
                 </div>
 
                 <ul className="dropdown-menu">
-                    <li className="dropdown-item" >Delete Post</li>
+                    <li className="dropdown-item" onClick={() => deletePost(usersPost._id)} >Delete Post</li>
                 </ul>   
 
             </div>
@@ -47,7 +51,7 @@ const UserPostCard = (props) => {
                     <p className='small'>200 <span className='text-muted'>likes</span> &nbsp;&nbsp; • &nbsp;&nbsp; 45 <span className='text-muted'>comments</span></p>
                 </div>
             </div>
-        </div>
+        </div> <hr />
     </div>
   )
 }

@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { usePost } from "../context/post/postContext"
 import { useNavigate } from "react-router-dom"
+import { storage } from "../firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const CreatePost = () => {
 
@@ -8,17 +10,36 @@ const CreatePost = () => {
     const navigate = useNavigate()
 
     const [postData, setPostData] = useState({
-        image: '',
-        textData: ''
+        postData : ''
     })
 
     const handleChange = (e) => {
         setPostData({...postData, [e.target.name]: e.target.value})
     }
 
+    const [imageUpload, setImageUpload] = useState(null)
+    // const [imageUrl, setImageUrl] = useState()
     const handleSubmit = async(e) => { 
         e.preventDefault()
-        await createPost(postData.image, postData.textData)
+
+        if(imageUpload ){
+            const imageRef = ref(storage, `images/${imageUpload.name}`)
+            await uploadBytes(imageRef, imageUpload).then(() => {
+                console.log('image uploaded')
+            });
+
+            const image = await getDownloadURL(imageRef).then((url) => {
+                return url
+            })
+            
+            image && createPost(image, postData.textData)
+        }
+
+        if(imageUpload === null){
+            createPost('', postData.textData)
+        }
+
+
         navigate('/')
     }
 
@@ -29,8 +50,8 @@ const CreatePost = () => {
         <form onSubmit={handleSubmit}>
             <div className="mb-3">
                 <label htmlFor="image" className="form-label">Image</label>
-                <input type="text" className="form-control" id="exampleInputImage1" name="image" aria-describedby="imageHelp" 
-                onChange={handleChange} value={postData.image} />
+                <input type="file" className="form-control" id="exampleInputImage1" name="image" aria-describedby="imageHelp" 
+                onChange={(event) => {setImageUpload(event.target.files[0])}} />
             </div>
             <div className="mb-3">
                 <label htmlFor="text" className="form-label"></label>

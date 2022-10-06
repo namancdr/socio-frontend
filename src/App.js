@@ -11,6 +11,7 @@ import { PostProvider } from './context/post/postContext'
 import PrivateRoute from './protected/PrivateRoute';
 import CreatePost from './components/CreatePost';
 import Profile from './components/Profile';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -20,6 +21,17 @@ function App() {
       <BrowserRouter>
  
           <Navbar />
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
           <Footer />
           <Routes>
             <Route path="/login" element={<Login /> } />

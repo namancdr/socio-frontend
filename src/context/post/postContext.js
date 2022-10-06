@@ -1,5 +1,9 @@
 import { createContext, useContext, useState } from "react";
 
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const postContext = createContext()
 
 export const usePost = () => {
@@ -25,7 +29,8 @@ export const PostProvider = ({children}) => {
             setPosts(json)
 
         } catch (error) {
-            console.log(error)
+            toast(error, {theme: "dark"})
+
         }
     }
 
@@ -40,9 +45,12 @@ export const PostProvider = ({children}) => {
             body: JSON.stringify({image, textData})
         });
         const json = await response.json()
+        toast(json.success, {theme: "dark"})
+
         
         if(json.error){
-            console.error(json.error)
+            toast(json.error, {theme: "dark"})
+        
         }
     }
 
@@ -57,6 +65,23 @@ export const PostProvider = ({children}) => {
 
         const json = await response.json()
         setUsersPost(json)
+        toast(json.success, {theme: "dark"})
+    }
+
+    const deletePost = async (id) => {
+        const response = await fetch(`${host}/api/post/deletepost/${id}`, {
+            method: 'DELETE', 
+            headers: {
+              'Content-Type': 'application/json',
+              'auth-token': localStorage.getItem('token')
+            }
+        });
+
+        const json = await response.json()
+
+        const newPosts = usersPost.filter((post) => {return post._id !== id})
+        setUsersPost(newPosts)
+        toast(json.success, {theme: "dark"})
     }
 
     
@@ -65,7 +90,8 @@ export const PostProvider = ({children}) => {
         posts,
         createPost,
         fetchUsersPosts,
-        usersPost
+        usersPost,
+        deletePost,
     }
 
     return(
